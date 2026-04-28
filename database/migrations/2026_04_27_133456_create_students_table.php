@@ -11,18 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id(); //講師ID
-            $table->string('password'); //講師用パスワード
-            $table->string('name'); //講師名
+        Schema::create('students', function (Blueprint $table) {
+            $table->id();
+            $table->string('password'); //生徒用パスワード
+            $table->string('name'); //生徒名
             $table->string('email')->unique(); //メールアドレス、重複防止
             $table->timestamp('email_verified_at')->nullable(); //メールアドレスの確認日時、空OK
             $table->date('birthday')->nullable(); //誕生日、空OK
             $table->string('gender')->nullable(); //性別、空OK
-            $table->date('joined_date')->nullable();   //入社日、空OK
-            $table->date('resigned_date')->nullable(); //退社日、空OK
-            $table->rememberToken(); //ログイン状態保持トークン
-            $table->timestamps(); //レコードの作成・更新日時
+            $table->string('grade')->nullable(); //学年、空OK
+            $table->date('start_date')->nullable();   //入塾日、空OK
+            $table->date('end_date')->nullable(); //退塾日、空OK
+            $table->string('classes')->nullable(); //受講コマ数、空OK
+            $table->timestamps();
         });
     }
 
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('students');
     }
 };
