@@ -12,6 +12,11 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    // この講師が作成した投稿一覧を取得する
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
     /**
      * The attributes that are mass assignable.
      *
