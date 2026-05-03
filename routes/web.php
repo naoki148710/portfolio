@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,5 +28,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/', [PostController::class, 'index'])->name('index');
+
+// PostControllerのindexメソッドを呼び出すルートを定義。URLは/posts、HTTPメソッドはGET、ルート名はposts.index。
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 
 require __DIR__ . '/auth.php';
