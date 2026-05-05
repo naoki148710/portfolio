@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('subject'); //指導教科名
+            $table->string('title'); //報告書タイトル
+            $table->string('subject')->nullable(); //指導教科名
             $table->text('comment'); //指導報告コメント
-            $table->text('addcomment'); //備考コメント
-            $table->string('score', 10); //点数
+            $table->text('addcomment')->nullable(); //備考コメント
+            $table->string('score', 10)->nullable(); //点数
             $table->timestamps();
         });
     }

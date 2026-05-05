@@ -22,7 +22,7 @@ class StudentsSeeder extends Seeder
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
-        DB::table('users')->insert([
+        DB::table('students')->insert([
             'name' => '佐藤花子',
             'email' => 'hanako@example.com',
             'password' => Hash::make('password'),
