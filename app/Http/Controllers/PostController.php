@@ -17,12 +17,12 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function index()
+    public function index(Post $post)
     {
         // with(['user', 'student'])は、Postモデルと関連するUserモデルとStudentモデルを同時取得。N+1問題を回避。
         $posts = Post::with(['user', 'student'])->get();
 
         // 変数$postsをビューに渡すための関数。ビュー内で$postsを使用可能。
-        return view('posts.index')->with(['posts' => $posts->getPaginateByLimit()]);
+        return view('posts.index')->with(['posts' => $post->getPaginateByLimit()]);
     }
 }
