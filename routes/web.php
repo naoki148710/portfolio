@@ -34,5 +34,7 @@ Route::get('/', [PostController::class, 'index'])->name('index');
 // PostControllerのindexメソッドを呼び出すルートを定義。URLは/posts、HTTPメソッドはGET、ルート名はposts.index。
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 
+// '/posts/{対象データのID}'にGetリクエストが来たら、PostControllerのshowメソッドを実行する
+Route::get('/posts/{post}', [PostController::class, 'show']);
 
 require __DIR__ . '/auth.php';

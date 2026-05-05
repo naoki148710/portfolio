@@ -13,8 +13,12 @@
     <div class='posts'>
         @foreach ($posts as $post)
         <div class='post'>
-            <h2 class='student'>{{ $post->student_name }}</h2>
-            <p class='user'>{{ $post->user_name }}</p>
+            <h2 class='title'>
+                <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
+            </h2>
+            <p class='subject'>{{ $post->subject }}</p>
+            <p class='comment'>{{ $post->comment }}</p>
+            <p class='users'>{{ $post->users_name }}</p>
             <p class='created_at'>{{ $post->created_at }}</p>
         </div>
         @endforeach

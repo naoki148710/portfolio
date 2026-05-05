@@ -25,4 +25,10 @@ class PostController extends Controller
         // 変数$postsをビューに渡すための関数。ビュー内で$postsを使用可能。
         return view('posts.index')->with(['posts' => $post->getPaginateByLimit()]);
     }
+
+    public function show(Post $post)
+    {
+        return view('posts.show')->with(['post' => $post]);
+        //'post'はbladeファイルで使う変数。中身は$postはid=1のPostインスタンス。
+    }
 }
