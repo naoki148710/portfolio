@@ -23,6 +23,6 @@ class PostController extends Controller
         $posts = Post::with(['user', 'student'])->get();
 
         // 変数$postsをビューに渡すための関数。ビュー内で$postsを使用可能。
-        return view('posts.index', compact('posts'));
+        return view('posts.index')->with(['posts' => $posts->getPaginateByLimit()]);
     }
 }
