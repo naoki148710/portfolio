@@ -10,6 +10,7 @@
 
 <body>
     <h1>報告書一覧</h1>
+    <a href='/posts/create'>create</a>
     <div class='posts'>
         @foreach ($posts as $post)
         <div class='post'>

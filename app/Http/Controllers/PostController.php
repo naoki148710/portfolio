@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 //この場合、App\Models内のPostクラスをインポートしている。
 
 use App\Models\Post;
-use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest; // useする
 
 /**
  * Post一覧を表示する
@@ -24,6 +24,18 @@ class PostController extends Controller
 
         // 変数$postsをビューに渡すための関数。ビュー内で$postsを使用可能。
         return view('posts.index')->with(['posts' => $post->getPaginateByLimit()]);
+    }
+
+    public function create()
+    {
+        return view('posts.create');
+    }
+
+    public function store(Post $post, PostRequest $request)
+    {
+        $input = $request['post'];
+        $post->fill($input)->save();
+        return redirect('/posts/' . $post->id);
     }
 
     public function show(Post $post)

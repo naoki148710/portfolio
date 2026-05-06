@@ -34,6 +34,12 @@ Route::get('/', [PostController::class, 'index'])->name('index');
 // PostControllerのindexメソッドを呼び出すルートを定義。URLは/posts、HTTPメソッドはGET、ルート名はposts.index。
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 
+// '/posts/create'にGetリクエストが来たら、PostControllerのcreateメソッドを実行する
+Route::get('/posts/create', [PostController::class, 'create']);
+
+// '/posts'にPostリクエストが来たら、PostControllerのstoreメソッドを実行する
+Route::post('/posts', [PostController::class, 'store']);
+
 // '/posts/{対象データのID}'にGetリクエストが来たら、PostControllerのshowメソッドを実行する
 Route::get('/posts/{post}', [PostController::class, 'show']);
 

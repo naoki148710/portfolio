@@ -9,6 +9,12 @@ class Post extends Model
 {
     use HasFactory;
 
+    // タイトル、内容を保存するためのfillableプロパティ
+    protected $fillable = [
+        'title',
+        'body',
+    ];
+
     // 投稿を作成した講師(User)を取得する
     public function user()
     {
