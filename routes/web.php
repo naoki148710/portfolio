@@ -37,10 +37,16 @@ Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 // '/posts/create'にGetリクエストが来たら、PostControllerのcreateメソッドを実行する
 Route::get('/posts/create', [PostController::class, 'create']);
 
+// '/posts/{対象データのID}'にGetリクエストが来たら、PostControllerのshowメソッドを実行する
+Route::get('/posts/{post}', [PostController::class, 'show']);
+
 // '/posts'にPostリクエストが来たら、PostControllerのstoreメソッドを実行する
 Route::post('/posts', [PostController::class, 'store']);
 
-// '/posts/{対象データのID}'にGetリクエストが来たら、PostControllerのshowメソッドを実行する
-Route::get('/posts/{post}', [PostController::class, 'show']);
+// '/posts/{対象データのID}/edit'にGetリクエストが来たら、PostControllerのeditメソッドを実行する
+Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
+
+// '/posts/{対象データのID}'にPutリクエストが来たら、PostControllerのupdateメソッドを実行する
+Route::put('/posts/{post}', [PostController::class, 'update']);
 
 require __DIR__ . '/auth.php';
