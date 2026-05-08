@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('addcomment')->nullable(); //備考コメント
             $table->string('score', 10)->nullable(); //点数
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -27,6 +28,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts');
+        Schema::table('posts', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 };
