@@ -8,13 +8,6 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Http\Requests\PostRequest; // useする
 
-/**
- * Post一覧を表示する
- *
- * @param Post Postモデル
- * @return array Postモデルリスト
- */
-
 class PostController extends Controller
 {
     public function index(Post $post)

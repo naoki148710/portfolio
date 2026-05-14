@@ -14,19 +14,24 @@ class Post extends Model
     // タイトル、内容を保存するためのfillableプロパティ
     protected $fillable = [
         'title',
-        'body',
+        'subject',
+        'comment',
+        'addcomment',
+        'score',
+        'users_id',
+        'students_id',
     ];
 
     // 投稿を作成した講師(User)を取得する
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'users_id');
     }
 
     // 投稿の対象である生徒(Student)を取得する
     public function student()
     {
-        return $this->belongsTo(Student::class);
+        return $this->belongsTo(Student::class, 'students_id');
     }
 
     // updated_atで降順に並べたあと、limitで件数制限をかける
