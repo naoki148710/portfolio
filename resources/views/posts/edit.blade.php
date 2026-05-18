@@ -1,16 +1,10 @@
-<!DOCTYPE HTML>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('報告書編集') }}
+        </h2>
+    </x-slot>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Blog</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-64UC4BEhTGwk3eGpak4nO2jqtl7liTS+juXkSJ2gPAQPmlClQO7s5UgCeR6US48g" crossorigin="anonymous">
-</head>
-
-<body>
-    <h1 class="title">編集画面</h1>
     <div class="content">
         <form action="/posts/{{ $post->id }}" method="POST">
             @csrf
@@ -43,10 +37,8 @@
                 <h2>生徒ID</h2>
                 <input type='text' name='post[students_id]' value="{{ $post->students_id }}">
             </div>
-            <button type="button" class="btn btn-primary">保存</button>
+            <input type="submit" class="btn btn-primary" value="保存">
         </form>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-jdSIJTK9l6XwXj3RixpVDXtMcA2bFd9O81RlLAwhpr2oXRqvQP88rr16IeFXTgFE" crossorigin="anonymous"></script>
-</body>
-
-</html>
+    <div class="footer"><a class="btn btn-secondary" href="/posts/{{ $post->id }}" role="button">戻る</a></div>
+</x-app-layout>
