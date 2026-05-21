@@ -9,33 +9,40 @@
         <form action="/posts/{{ $post->id }}" method="POST">
             @csrf
             @method('PUT')
-            <div class='content__title'>
-                <h2>タイトル</h2>
-                <input type='text' name='post[title]' value="{{ $post->title }}">
+            <div class="mb-3">
+                <label for="title" class="form-label">タイトル</label>
+                <input type="text" name="post[title]" id="title" class="form-control" value="{{ $post->title }}">
             </div>
-            <div class='content__subject'>
-                <h2>指導教科</h2>
-                <input type='text' name='post[subject]' value="{{ $post->subject }}">
+            <div class="mb-3">
+                <label for="subject" class="form-label">指導教科</label>
+                <select name="post[subject]" id="subject" class="form-select" value="{{ $post->subject }}">
+                    <option value="">選択してください</option>
+                    <option value="国語" {{ $post->subject == '国語' ? 'selected' : '' }}>国語</option>
+                    <option value="数学" {{ $post->subject == '数学' ? 'selected' : '' }}>数学</option>
+                    <option value="英語" {{ $post->subject == '英語' ? 'selected' : '' }}>英語</option>
+                    <option value="理科" {{ $post->subject == '理科' ? 'selected' : '' }}>理科</option>
+                    <option value="社会" {{ $post->subject == '社会' ? 'selected' : '' }}>社会</option>
+                </select>
             </div>
-            <div class='content__comment'>
-                <h2>指導報告用コメント</h2>
-                <input type='text' name='post[comment]' value="{{ $post->comment }}">
+            <div class="mb-3">
+                <label for="comment" class="form-label">指導内容</label>
+                <textarea name="post[comment]" id="comment" class="form-control">{{ $post->comment }}</textarea>
             </div>
-            <div class='content__addcomment'>
-                <h2>備考コメント</h2>
-                <input type='text' name='post[addcomment]' value="{{ $post->addcomment }}">
+            <div class="mb-3">
+                <label for="addcomment" class="form-label">備考</label>
+                <textarea name="post[addcomment]" id="addcomment" class="form-control">{{ $post->addcomment }}</textarea>
             </div>
-            <div class='content__score'>
-                <h2>評価</h2>
-                <input type='text' name='post[score]' value="{{ $post->score }}">
+            <div class="mb-3">
+                <label for="score" class="form-label">評価</label>
+                <input type="text" name="post[score]" id="score" class="form-control" value="{{ $post->score }}">
             </div>
-            <div class='content__users_id'>
-                <h2>講師ID</h2>
-                <input type='text' name='post[users_id]' value="{{ $post->users_id }}">
+            <div class="mb-3">
+                <label for="users_id" class="form-label">講師ID</label>
+                <input type="text" name="post[users_id]" id="users_id" class="form-control" value="{{ $post->users_id }}">
             </div>
-            <div class='content__students_id'>
-                <h2>生徒ID</h2>
-                <input type='text' name='post[students_id]' value="{{ $post->students_id }}">
+            <div class="mb-3">
+                <label for="students_id" class="form-label">生徒ID</label>
+                <input type="text" name="post[students_id]" id="students_id" class="form-control" value="{{ $post->students_id }}">
             </div>
             <input type="submit" class="btn btn-primary" value="保存">
         </form>

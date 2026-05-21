@@ -37,6 +37,18 @@ class PostController extends Controller
         //'post'はbladeファイルで使う変数。中身は$postはid=1のPostインスタンス。
     }
 
+    public function scoreChart(Post $post)
+    {
+        $reports = Post::where('students_id', $post->students_id)->orderBy('created_at', 'asc')->get();
+        $labels = $reports->map(function ($report) {
+            return $report->created_at->format('Y/m/d');
+        });
+        $scores = $reports->map(function ($report) {
+            return $report->score;
+        });
+        return view('posts.chart')->with(['post' => $post, 'labels' => $labels, 'scores' => $scores]);
+    }
+
     public function edit(Post $post)
     {
         return view('posts.edit')->with(['post' => $post]);

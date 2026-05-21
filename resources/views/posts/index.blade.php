@@ -16,10 +16,13 @@
             <p class='comment'>{{ $post->comment }}</p>
             <p class='users'>{{ $post->users_name }}</p>
             <p class='created_at'>{{ $post->created_at }}</p>
+            <a href="{{ route('students.scores', $post->students_id) }}" class="btn btn-outline-success btn-sm">
+                点数推移
+            </a>
             <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
                 @csrf
                 @method('DELETE')
-                <button type="button" onclick="deletePost({{ $post->id }})">delete</button>
+                <button type="button" onclick="deletePost({{ $post->id }})">削除</button>
             </form>
         </div>
         @endforeach
