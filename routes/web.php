@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -21,10 +23,24 @@ Route::controller(PostController::class)->middleware(['auth'])->group(function (
     Route::get('/posts/{post}/scores', 'scoreChart')->name('students.scores');
 });
 
+Route::controller(StudentController::class)->middleware(['auth'])->group(function () {
+    Route::get('/students', 'index')->name('students.index');
+    Route::post('/students', 'store')->name('students.store');
+    Route::get('/students/create', 'create')->name('students.create');
+    Route::get('/students/{student}', 'show')->name('students.show');
+    Route::put('/students/{student}', 'update')->name('students.update');
+    Route::delete('/students/{student}', 'destroy')->name('students.destroy');
+    Route::get('/students/{student}/edit', 'edit')->name('students.edit');
+});
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/learning-support', [QuestionController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('Questions.index');
 
 require __DIR__ . '/auth.php';

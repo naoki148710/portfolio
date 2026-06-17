@@ -17,15 +17,11 @@ class StudentsSeeder extends Seeder
     {
         DB::table('students')->insert([
             'name' => '山田太郎',
-            'email' => 'tarou@example.com',
-            'password' => Hash::make('password'),
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
         DB::table('students')->insert([
             'name' => '佐藤花子',
-            'email' => 'hanako@example.com',
-            'password' => Hash::make('password'),
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);

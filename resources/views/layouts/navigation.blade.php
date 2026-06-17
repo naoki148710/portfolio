@@ -18,6 +18,12 @@
                     <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
                         {{ __('指導報告書') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('students.index')" :active="request()->routeIs('students.index')">
+                        {{ __('生徒一覧') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('Questions.index')" :active="request()->routeIs('Questions.index')">
+                        {{ __('学習サポート') }}
+                    </x-nav-link>
                 </div>
             </div>
 

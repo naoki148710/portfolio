@@ -13,10 +13,7 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->string('password'); //生徒用パスワード
             $table->string('name'); //生徒名
-            $table->string('email')->unique(); //メールアドレス、重複防止
-            $table->timestamp('email_verified_at')->nullable(); //メールアドレスの確認日時、空OK
             $table->date('birthday')->nullable(); //誕生日、空OK
             $table->string('gender')->nullable(); //性別、空OK
             $table->string('grade')->nullable(); //学年、空OK
